@@ -4,15 +4,15 @@ app = Flask(__name__, template_folder="templates")
 
 path_to_data = "static/data.txt"
 
-available_fields_to_write = ["Name", "Email", "Message", "Field5", "Check1",
-                             "Check2", "Check3", "List"]
+available_fields_to_write = ["Name", "Email", "choice", "oval",
+                             "heart", "oblong", "square", "round", "List"]
 
 current_number = 1
 
 
 @app.route('/')
 def hello_world():
-    return render_template("formPOST.html")
+    return render_template("Questioning1.html")
 
 
 @app.route('/', methods=["POST"])
@@ -22,9 +22,10 @@ def getInfo():
         file.write("Data number " + str(current_number) + "\n")
         for name in available_fields_to_write:
             try:
-                print(request.form.get(name))
+                print("got", request.form.get(name))
                 file.write(request.form.get(name).replace("\r\n", "\\n"))
             except TypeError:
+                print("or here")
                 continue
             except AttributeError:
                 print("here")
@@ -35,7 +36,7 @@ def getInfo():
                 return make_response(
                     "Something went wrong writing your data. Please, try again",
                     200)
-            file.write(" #&# ")
+            file.write("&&")
         file.write("\n")
         current_number += 1
     return make_response('Test worked!', 200)
