@@ -1,103 +1,103 @@
 <form action="" method="post">
 
-    <header>
-        <h2>Example POST Form</h2>
-    </header>
+  <header>
+    <h2>Example POST Form</h2>
+  </header>
 
+  <div>
+    <label class="desc" id="title1" for="Field1">Full Name</label>
     <div>
-        <label class="desc" id="title1" for="Field1">Full Name</label>
+      <input id="Field1" name="Name" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="title3" for="Field3">Email</label>
+    <div>
+      <input id="Field3" name="Email" type="email" spellcheck="false" value="" maxlength="255" tabindex="2">
+    </div>
+  </div>
+
+  <div>
+    <fieldset>
+
+      <legend id="title5" class="desc">
+        Do you wear glasses?
+      </legend>
+
+      <div>
+        <input id="radioDefault_5" name="wearGlasses" type="hidden" value="">
         <div>
-            <input id="Field1" name="Name" type="text" class="field text fn" value="" size="8" tabindex="1">
+          <input id="Field5_0" name="Choice" type="radio" value="Yes" tabindex="3" checked="checked">
+          <label class="choice" for="Field5_0">Yes</label>
         </div>
-    </div>
-
-    <div>
-        <label class="desc" id="title3" for="Field3">Email</label>
         <div>
-            <input id="Field3" name="Email" type="email" spellcheck="false" value="" maxlength="255" tabindex="2">
+          <input id="Field5_1" name="Choice" type="radio" value="Lens" tabindex="4">
+          <label class="choice" for="Field5_1">Switched for lens</label>
         </div>
-    </div>
-
-    <div>
-        <fieldset>
-
-            <legend id="title5" class="desc">
-                Do you wear glasses?
-            </legend>
-
-            <div>
-                <input id="radioDefault_5" name="wearGlasses" type="hidden" value="">
-                <div>
-                    <input id="Field5_0" name="Choice" type="radio" value="Yes" tabindex="3" checked="checked">
-                    <label class="choice" for="Field5_0">Yes</label>
-                </div>
-                <div>
-                    <input id="Field5_1" name="Choice" type="radio" value="Lens" tabindex="4">
-                    <label class="choice" for="Field5_1">Switched for lens</label>
-                </div>
-                <div>
-                    <input id="Field5_2" name="Choice" type="radio" value="Sunglasses" tabindex="5">
-                    <label class="choice" for="Field5_2">Only sunglasses</label>
-                </div>
-                <div>
-                    <input id="Field5_3" name="Choice" type="radio" value="Nothing" tabindex="6">
-                    <label class="choice" for="Field5_3">No</label>
-                </div>
-            </div>
-        </fieldset>
-    </div>
-
-    <div>
-        <fieldset>
-            <legend id="title6" class="desc">
-                Which do you like?
-            </legend>
-            <div>
-                <div>
-                    <input id="Field6" name="oval" type="checkbox" value="oval" tabindex="7">
-                    <label class="choice" for="Field6">Oval</label>
-                </div>
-                <div>
-                    <input id="Field7" name="heart" type="checkbox" value="heart" tabindex="8">
-                    <label class="choice" for="Field7">Heart</label>
-                </div>
-                <div>
-                    <input id="Field8" name="oblong" type="checkbox" value="oblong" tabindex="9">
-                    <label class="choice" for="Field8">Oblong</label>
-                    </span>
-                </div>
-                <div>
-                    <input id="Field7" name="square" type="checkbox" value="square" tabindex="8">
-                    <label class="choice" for="Field7">Square</label>
-                </div>
-                <div>
-                    <input id="Field8" name="round" type="checkbox" value="round" tabindex="9">
-                    <label class="choice" for="Field8">Round</label>
-                    </span>
-                </div>
-        </fieldset>
-    </div>
-
-    <div>
-        <label class="desc" id="title106" for="Field106">
-            Select the best
-        </label>
         <div>
-            <select id="Field106" name="List" class="field select medium" tabindex="10">
-                <option value="oval">Oval</option>
-                <option value="heart">Heart</option>
-                <option value="oblong">Oblong</option>
-                <option value="square">Square</option>
-                <option value="round">Round</option>
-
-            </select>
+          <input id="Field5_2" name="Choice" type="radio" value="Sunglasses" tabindex="5">
+          <label class="choice" for="Field5_2">Only sunglasses</label>
         </div>
-    </div>
-
-    <div>
         <div>
-            <input id="saveForm" name="save" type="submit" value="Submit">
+          <input id="Field5_3" name="Choice" type="radio" value="Nothing" tabindex="6">
+          <label class="choice" for="Field5_3">No</label>
         </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <fieldset>
+      <legend id="title6" class="desc">
+        Which do you like?
+      </legend>
+      <div>
+        <div>
+          <input id="Field6" name="oval" type="checkbox" value="oval" tabindex="7">
+          <label class="choice" for="Field6">Oval</label>
+        </div>
+        <div>
+          <input id="Field7" name="heart" type="checkbox" value="heart" tabindex="8">
+          <label class="choice" for="Field7">Heart</label>
+        </div>
+        <div>
+          <input id="Field8" name="oblong" type="checkbox" value="oblong" tabindex="9">
+          <label class="choice" for="Field8">Oblong</label>
+          </span>
+        </div>
+        <div>
+          <input id="Field7" name="square" type="checkbox" value="square" tabindex="8">
+          <label class="choice" for="Field7">Square</label>
+        </div>
+        <div>
+          <input id="Field8" name="round" type="checkbox" value="round" tabindex="9">
+          <label class="choice" for="Field8">Round</label>
+          </span>
+        </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <label class="desc" id="title106" for="Field106">
+      Select the best
+    </label>
+    <div>
+      <select id="Field106" name="List" class="field select medium" tabindex="10">
+        <option value="oval">Oval</option>
+        <option value="heart">Heart</option>
+        <option value="oblong">Oblong</option>
+        <option value="square">Square</option>
+        <option value="round">Round</option>
+
+      </select>
     </div>
+  </div>
+
+  <div>
+    <div>
+      <input id="saveForm" name="save" type="submit" value="Submit">
+    </div>
+  </div>
 
 </form>
