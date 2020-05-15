@@ -29,7 +29,7 @@
             {% set loop_number = loop.index0 %}
             {% for answer in question["answers"] %}
               <div>
-                <input id="Field{{ loop_number }}_{{ loop.index0 }}" name="answer{{ loop_number }}"
+                <input id="Field{{ loop_number }}_{{ loop.index0 }}" name="question{{ loop_number }}"
                        type="radio"
                        value="{{ answer[1] }}" tabindex="0">
                 <label class="choice" for="Field{{ loop_number }}_{{ loop.index0 }}">{{ answer[0] }}</label>

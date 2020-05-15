@@ -58,10 +58,12 @@ class Questioning:
         print("<Enter short answer to be written in data file> ")
         second = input()
         print("#############TYPE", current_question["type"])
-        if current_question["type"] is "check":
-          self.fields_to_write.append("answer" + str(j) + "_" + second)
-        elif current_question["type"] is "radio":
-          self.fields_to_write.append("answer" + str(j))
+        if current_question["type"] == "check":
+          print("here")
+          self.fields_to_write.append("question" + str(i) + "_" + second)
+        elif current_question["type"] == "radio" and "question" + \
+                str(i) not in self.fields_to_write:
+          self.fields_to_write.append("question" + str(i))
         answers.append([first, second])
       current_question["answers"] = answers
       self.questions.append(current_question)

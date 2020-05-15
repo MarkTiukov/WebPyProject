@@ -44,7 +44,7 @@ def getInfo(questioning_id=None):
   current_question = findCurrentQuestioning(questioning_id)
   global current_number
   with open(path_to_data, "a") as file:
-    file.write("Data number " + str(current_number) + "\n")
+    file.write("Data number " + str(current_number) + " for Questioning '" + current_question.name + "'\n")
     print("fields: ", current_question.fields_to_write)
     for name in current_question.fields_to_write:
       try:
