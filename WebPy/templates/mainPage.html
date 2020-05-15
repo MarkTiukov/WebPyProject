@@ -5,7 +5,7 @@
   <title>Список опросов:</title>
   {% for questioning in questionings %}
     <div>
-      <a href="/{{ questioning.link }}">{{ questioning.name }}</a>
+      <a href="/answer/{{ questioning.link }}">{{ questioning.name }}</a>
     </div>
   {% endfor %}
 

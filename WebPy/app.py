@@ -21,6 +21,56 @@ def mainPage():
   return render_template("mainPage.html", questionings=questionings)
 
 
+def findCurrentQuestioning(questioning_id):
+  result = None
+  for questioning in questionings:
+    if questioning.link == questioning_id:
+      result = questioning
+      break
+  return result
+
+
+@app.route("/answer/<questioning_id>", methods=["GET"])
+def showQuestioning(questioning_id=None):
+  questioning = findCurrentQuestioning(questioning_id)
+  if questioning is not None:
+    return render_template("formTemplate.html",
+                           questions=questioning.questions)
+  return make_response("Something went wrong", 404)
+
+
+@app.route('/answer/<questioning_id>', methods=["POST"])
+def getInfo(questioning_id=None):
+  current_question = findCurrentQuestioning(questioning_id)
+  global current_number
+  with open(path_to_data, "a") as file:
+    file.write("Data number " + str(current_number) + "\n")
+    print("fields: ", current_question.fields_to_write)
+    for name in current_question.fields_to_write:
+      try:
+        print("got", request.form.get(name))
+        request.form.get(name)
+        file.write(name)
+        file.write("=")
+        file.write(request.form.get(name))
+      except TypeError:
+        print("<type error>")
+        continue
+      except AttributeError:
+        print("<attribute error>")
+        continue
+      except:
+        print(name)
+        file.write(" $$#DAMAGED DATA#$$\n")
+        return make_response(
+          "Something went wrong writing your data. Please, try again",
+          200)
+      file.write("&&")
+    file.write("\n")
+    current_number += 1
+  return redirect("/")
+
+
 def createNewQuestioning():
   questionings.append(Questioning(len(questionings) + 1))
 

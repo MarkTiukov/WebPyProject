@@ -5,17 +5,21 @@ def gotBadInput():
   print("<ERROR: Bad input. Try again>")
 
 
+def success():
+  print("<Created>")
+
+
 class Questioning:
   def __init__(self, number: int):
     self.questions = list()
-    self.fields_to_write = set()
+    self.fields_to_write = ["name", "email"]
     self.number = number
     self.name = "DefaultName" + str(number)
     print("<Enter the name of your questioning>")
     self.name = self.getName()
     self.link = self.name.replace(" ", "")
     self.addQuestions()
-
+    success()
 
   def getNumber(self):
     try:
@@ -53,7 +57,11 @@ class Questioning:
         first = input()
         print("<Enter short answer to be written in data file> ")
         second = input()
-        self.fields_to_write.add(second)
+        print("#############TYPE", current_question["type"])
+        if current_question["type"] is "check":
+          self.fields_to_write.append("answer" + str(j) + "_" + second)
+        elif current_question["type"] is "radio":
+          self.fields_to_write.append("answer" + str(j))
         answers.append([first, second])
       current_question["answers"] = answers
       self.questions.append(current_question)
