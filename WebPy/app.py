@@ -154,10 +154,13 @@ def createQuestioningFromWeb():
   new_questioning = Questioning(len(questionings) + 1)
   new_questioning.setName(request.form["questioningName"])
   counter = 0
+  print(request.form)
   while "question" + str(counter) in request.form:
     new_questioning.addQuestion(request.form, counter)
     counter += 1
   questionings.append(new_questioning)
+  global number_of_questions
+  number_of_questions = 1
   return redirect("/")
 
 
@@ -176,5 +179,4 @@ def addQuestion():
 
 
 if __name__ == '__main__':
-  print("maybe im here")
   app.run(port=2205)
