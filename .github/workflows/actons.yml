@@ -28,5 +28,5 @@ jobs:
     - name: Test with unittest
       run: |
         cd WebPy
-        venv/bin/python -m unittest discover -v
+        python -m unittest discover -v
 
