@@ -24,7 +24,7 @@ class Questioning:
 
   def setName(self, name):
     self.name = name
-    if self.name is "DefaultName":
+    if self.name == "DefaultName":
       self.name += str(self.number)
     self.link = self.name.replace(" ", "")
 
