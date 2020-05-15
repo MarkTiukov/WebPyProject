@@ -145,4 +145,4 @@ def getInfoFromExample():
 
 if __name__ == '__main__':
   print("maybe im here")
-  app.run()
+  app.run(port=2205)
