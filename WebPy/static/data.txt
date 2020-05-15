@@ -1,2 +1,0 @@
-Data number 1 for Questioning 'My name'
-name=Mark&&email=email@mail.ru&&question0=b &&question1=3&&
