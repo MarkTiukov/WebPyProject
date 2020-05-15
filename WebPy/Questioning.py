@@ -1,15 +1,41 @@
+from string import ascii_letters
+
+
+def gotBadInput():
+  print("<ERROR: Bad input. Try again>")
+
+
 class Questioning:
-  def __init__(self):
+  def __init__(self, number: int):
     self.questions = list()
     self.fields_to_write = set()
+    self.number = number
+    self.name = "DefaultName" + str(number)
+    print("<Enter the name of your questioning>")
+    self.name = self.getName()
+    self.link = self.name.replace(" ", "")
     self.addQuestions()
+
 
   def getNumber(self):
     try:
       return int(input())
     except:
-      print("<Bad input. Try again>")
+      gotBadInput()
       return self.getNumber()
+
+  def getName(self):
+    print("<Your name should contain only english letters and spaces>")
+    print(
+      "<You can enter '$' to skip this part, a default name would be given>")
+    given = input()
+    if given == "$":
+      return self.name
+    for letter in given:
+      if not (letter in ascii_letters or letter == " "):
+        gotBadInput()
+        return self.getName()
+    return given
 
   def addQuestions(self):
     print("<Type number of questions in your questioning> ")

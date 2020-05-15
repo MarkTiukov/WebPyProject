@@ -16,8 +16,13 @@ questionings = list()
 current_number = 1
 
 
+@app.route("/", methods=["GET"])
+def mainPage():
+  return render_template("mainPage.html", questionings=questionings)
+
+
 def createNewQuestioning():
-  questionings.append(Questioning())
+  questionings.append(Questioning(len(questionings) + 1))
 
 
 def secondThread():
@@ -31,11 +36,9 @@ def secondThread():
   logging.info("THREAD 2 RUNNING")
 
 
-format = "%(asctime)s: %(message)s"
-logging.basicConfig(format=format, level=logging.INFO,
+logging.basicConfig(format="%(asctime)s: %(message)s", level=logging.INFO,
                     datefmt="%H:%M:%S")
-second_thread = threading.Thread(target=secondThread(), args=(1,))
-logging.info("Main    : before running thread")
+second_thread = threading.Thread(target=secondThread, daemon=True)
 second_thread.start()
 
 
@@ -58,13 +61,13 @@ def testTemplateForm():
   return render_template("formTemplate.html", questions=questions)
 
 
-@app.route('/')
-def hello_world():
+@app.route('/ExampleOfQuestioning')
+def example():
   return render_template("QuestioningExample.html")
 
 
-@app.route('/', methods=["POST"])
-def getInfo():
+@app.route('/ExampleOfQuestioning', methods=["POST"])
+def getInfoFromExample():
   global current_number
   with open(path_to_data, "a") as file:
     file.write("Data number " + str(current_number) + "\n")
@@ -91,4 +94,5 @@ def getInfo():
 
 
 if __name__ == '__main__':
+  print("maybe im here")
   app.run()
