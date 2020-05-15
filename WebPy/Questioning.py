@@ -15,11 +15,31 @@ class Questioning:
     self.fields_to_write = ["name", "email"]
     self.number = number
     self.name = "DefaultName" + str(number)
-    print("<Enter the name of your questioning>")
-    self.name = self.getName()
-    self.link = self.name.replace(" ", "")
-    self.addQuestions()
+    # active in order to use console
+    # print("<Enter the name of your questioning>")
+    # self.name = self.getName()
+    # self.link = self.name.replace(" ", "")
+    # self.addQuestions()
     success()
+
+  def setName(self, name):
+    self.name = name
+    if self.name is "DefaultName":
+      self.name += str(self.number)
+    self.link = self.name.replace(" ", "")
+
+  def addQuestion(self, form_dict, number, answer_type="radio"):
+    cur_question = dict()
+    cur_question["question"] = form_dict["question" + str(number)]
+    cur_question["type"] = answer_type
+    self.fields_to_write.append("question" + str(number))
+    cur_answers = list()
+    for i in range(3):
+      cur_answers.append([form_dict["answer" + str(number) + "_" + str(i)],
+                          form_dict[
+                            "short_answer" + str(number) + "_" + str(i)]])
+    cur_question["answers"] = cur_answers
+    self.questions.append(cur_question)
 
   def getNumber(self):
     try:

@@ -2,15 +2,20 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Список опросов:</title>
-  {% for questioning in questionings %}
-    <div>
-      <a href="/answer/{{ questioning.link }}">{{ questioning.name }}</a>
-    </div>
-  {% endfor %}
-
+  <title>Список опросов</title>
 </head>
 <body>
 
+<div>
+  <a href="/createmode">Create new questioning</a>
+</div>
+
+<div></div>
+
+{% for questioning in questionings %}
+  <div>
+    <a href="/answer/{{ questioning.link }}">{{ questioning.name }}</a>
+  </div>
+{% endfor %}
 </body>
 </html>

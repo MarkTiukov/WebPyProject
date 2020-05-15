@@ -44,7 +44,8 @@ def getInfo(questioning_id=None):
   current_question = findCurrentQuestioning(questioning_id)
   global current_number
   with open(path_to_data, "a") as file:
-    file.write("Data number " + str(current_number) + " for Questioning '" + current_question.name + "'\n")
+    file.write("Data number " + str(
+      current_number) + " for Questioning '" + current_question.name + "'\n")
     print("fields: ", current_question.fields_to_write)
     for name in current_question.fields_to_write:
       try:
@@ -141,6 +142,37 @@ def getInfoFromExample():
     file.write("\n")
     current_number += 1
   return redirect("/")
+
+
+##############################################################################
+
+number_of_questions = 1
+
+
+@app.route("/create_questioning", methods=["POST"])
+def createQuestioningFromWeb():
+  new_questioning = Questioning(len(questionings) + 1)
+  new_questioning.setName(request.form["questioningName"])
+  counter = 0
+  while "question" + str(counter) in request.form:
+    new_questioning.addQuestion(request.form, counter)
+    counter += 1
+  questionings.append(new_questioning)
+  return redirect("/")
+
+
+@app.route("/createmode", methods=["GET"])
+def enterCreationMode():
+  global number_of_questions
+  return render_template("createQuestioning.html",
+                         number_of_questions=number_of_questions)
+
+
+@app.route("/add_question", methods=["POST"])
+def addQuestion():
+  global number_of_questions
+  number_of_questions += 1
+  return redirect("/createmode")
 
 
 if __name__ == '__main__':
