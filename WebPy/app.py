@@ -1,4 +1,8 @@
-from flask import Flask, render_template, make_response, request
+from flask import Flask, render_template, make_response, request, redirect
+import threading
+import logging
+
+from Questioning import Questioning
 
 app = Flask(__name__, template_folder="templates")
 
@@ -7,7 +11,32 @@ path_to_data = "static/data.txt"
 available_fields_to_write = ["Name", "Email", "choice", "oval",
                              "heart", "oblong", "square", "round", "List"]
 
+questionings = list()
+
 current_number = 1
+
+
+def createNewQuestioning():
+  questionings.append(Questioning())
+
+
+def secondThread():
+  print("<Enter 'make' to create a new questioning>")
+  while True:
+    command = input()
+    if command == "make":
+      createNewQuestioning()
+    else:
+      print("<Error: unknown command. Try again>")
+  logging.info("THREAD 2 RUNNING")
+
+
+format = "%(asctime)s: %(message)s"
+logging.basicConfig(format=format, level=logging.INFO,
+                    datefmt="%H:%M:%S")
+second_thread = threading.Thread(target=secondThread(), args=(1,))
+logging.info("Main    : before running thread")
+second_thread.start()
 
 
 @app.route("/testtemplateform")
@@ -58,7 +87,7 @@ def getInfo():
       file.write("&&")
     file.write("\n")
     current_number += 1
-  return make_response('Test worked!', 200)
+  return redirect("/")
 
 
 if __name__ == '__main__':
