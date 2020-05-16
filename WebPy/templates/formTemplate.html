@@ -1,0 +1,60 @@
+<form action="" method="post">
+
+  <header>
+    <h2>Template POST Form</h2>
+  </header>
+
+  <div>
+    <label class="desc" id="tittle1" for="Field1">Full Name</label>
+    <div>
+      <input id="Field1" name="name" type="text" class="field text fn" value="" size="8" tabindex="1">
+    </div>
+  </div>
+
+  <div>
+    <label class="desc" id="tittle2" for="Field3">Email</label>
+    <div>
+      <input id="Field3" name="email" type="email" spellcheck="false" value="" maxlength="255" tabindex="2">
+    </div>
+  </div>
+  {% for question in questions %}
+    <div>
+      <fieldset>
+        <legend id="tittle{{ loop.index + 2 }}" class="desc">
+          {{ question["question"] }}
+        </legend>
+        <div>
+          {% if question["type"] == "radio" %}
+            <input id="radioDefault_5" type="hidden" type="hidden">
+            {% set loop_number = loop.index0 %}
+            {% for answer in question["answers"] %}
+              <div>
+                <input id="Field{{ loop_number }}_{{ loop.index0 }}" name="question{{ loop_number }}"
+                       type="radio"
+                       value="{{ answer[1] }}" tabindex="0">
+                <label class="choice" for="Field{{ loop_number }}_{{ loop.index0 }}">{{ answer[0] }}</label>
+              </div>
+            {% endfor %}
+          {% elif question["type"] == "check" %}
+            {% set loop_number = loop.index0 %}
+            {% for answer in question["answers"] %}
+              <div>
+                <input id="Field{{ loop_number }}" name="question{{ loop_number }}_{{ answer[1] }}"
+                       type="checkbox"
+                       value="answer{{ loop_number }}_{{ answer[1] }}" tabindex="0">
+                <label class="choice" for="Field{{ loop_number }}">{{ answer[0] }}</label>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </fieldset>
+    </div>
+  {% endfor %}
+
+  <div>
+    <div>
+      <input id="saveForm" name="save" type="submit" value="Submit">
+    </div>
+  </div>
+
+</form>

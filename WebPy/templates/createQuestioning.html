@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create</title>
+  <style type="text/css">
+    .block1 {
+      background: #83f5ca;
+      padding: 5px 20px 5px 5px;
+      border: solid 1px #7c00ff;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<form action="/create_questioning" method="post">
+  <label for="BigName">Questioning Name</label>
+  <input id="BigName" name="questioningName" type="text" value="DefaultName" size="20" tabindex="0" required>
+  {% for i in range(number_of_questions) %}
+    <fieldset>
+      <div class="block1">
+        <label for="q{{ loop.index0 }}">Question</label>
+        <input id="q{{ loop.index0 }}" name="question{{ loop.index0 }}" type="text" value="" size="34" tabindex="0">
+        <br>
+        <label for="a{{ loop.index0 }}_{{ 0 }}">Answer 0</label>
+        <input id="a{{ loop.index0 }}_{{ 0 }}" name="answer{{ loop.index0 }}_0" type="text" value="" size="34" tabindex="0">
+        <br>
+        <label for="sa{{ loop.index0 }}_{{ 0 }}">Short Answer 0</label>
+        <input id="sa{{ loop.index0 }}_{{ 0 }}" name="short_answer{{ loop.index0 }}_0" type="text" value="" size="17" tabindex="0">
+        <br>
+        <label for="a{{ loop.index0 }}_{{ 1 }}">Answer 1</label>
+        <input id="a{{ loop.index0 }}_{{ 1 }}" name="answer{{ loop.index0 }}_1" type="text" value="" size="34" tabindex="0">
+        <br>
+        <label for="sa{{ loop.index0 }}_{{ 1 }}">Short Answer 1</label>
+        <input id="sa{{ loop.index0 }}" name="short_answer{{ loop.index0 }}_1" type="text" value="" size="17" tabindex="0">
+        <br>
+        <label for="a{{ loop.index0 }}_{{ 2 }}">Answer 2</label>
+        <input id="{{ loop.index0 }}_{{ 2 }}" name="answer{{ loop.index0 }}_2" type="text" value="" size="34" tabindex="0">
+        <br>
+        <label for="sa{{ loop.index0 }}_{{ 2 }}">Short Answer 2</label>
+        <input id="sa{{ loop.index0 }}_{{ 2 }}" name="short_answer{{ loop.index0 }}_2" type="text" value="" size="17" tabindex="0">
+
+      </div>
+    </fieldset>
+  {% endfor %}
+  <button formaction="/add_question" type="submit">add question</button>
+  <button type="submit">create</button>
+</form>
+</body>
+</html>
